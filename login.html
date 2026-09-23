@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FreshBite - Login</title>
+
+    <link rel="stylesheet" href="CSS.css">
+
+    <style>
+        .auth-page {
+            min-height: 100vh;
+            background-color: #FFF8F0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .auth-container {
+            width: 100%;
+            max-width: 430px;
+            background: white;
+            padding: 40px;
+            border-radius: 18px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .auth-logo {
+            text-align: center;
+            color: #FF6B35;
+            font-size: 35px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .auth-title {
+            text-align: center;
+            color: #2D1B12;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .auth-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #2D1B12;
+            font-weight: bold;
+            margin-bottom: 7px;
+        }
+
+        .form-group input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 13px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #FF6B35;
+        }
+
+        .auth-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: #FF6B35;
+            color: white;
+            border: none;
+            border-radius: 9px;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .auth-btn:hover {
+            background-color: #e85a28;
+        }
+
+        .auth-link {
+            text-align: center;
+            margin-top: 22px;
+            color: #555;
+        }
+
+        .auth-link a {
+            color: #FF6B35;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .home-link {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: #2D1B12;
+            text-decoration: none;
+        }
+
+        .message {
+            text-align: center;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="auth-page">
+
+        <div class="auth-container">
+
+            <div class="auth-logo">
+                FreshBite 🍔
+            </div>
+
+            <h1 class="auth-title">
+                Welcome Back!
+            </h1>
+
+            <p class="auth-subtitle">
+                Login to continue ordering delicious food.
+            </p>
+
+            <form id="login-form">
+
+                <div class="form-group">
+
+                    <label for="login-email">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="login-email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="login-password">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="login-password"
+                        placeholder="Enter your password"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="auth-btn">
+
+                    Login
+
+                </button>
+
+            </form>
+
+
+            <div
+                id="login-message"
+                class="message">
+            </div>
+
+
+            <p class="auth-link">
+
+                Don't have an account?
+
+                <a href="register.html">
+                    Register
+                </a>
+
+            </p>
+
+
+            <a
+                href="index.html"
+                class="home-link">
+
+                ← Back to Home
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        document.getElementById("login-form")
+            .addEventListener("submit", function(event) {
+
+                event.preventDefault();
+
+                let email =
+                    document.getElementById("login-email").value;
+
+                let password =
+                    document.getElementById("login-password").value;
+
+                let savedUser =
+                    JSON.parse(
+                        localStorage.getItem("freshBiteUser")
+                    );
+
+
+                if (!savedUser) {
+
+                    document.getElementById(
+                        "login-message"
+                    ).innerText =
+                        "No account found. Please register first.";
+
+                    document.getElementById(
+                        "login-message"
+                    ).style.color = "red";
+
+                    return;
+                }
+
+
+                if (
+                    email === savedUser.email &&
+                    password === savedUser.password
+                ) {
+
+                    localStorage.setItem(
+                        "freshBiteLoggedIn",
+                        "true"
+                    );
+
+
+                    document.getElementById(
+                        "login-message"
+                    ).innerText =
+                        "Login successful! 🎉";
+
+
+                    document.getElementById(
+                        "login-message"
+                    ).style.color = "green";
+
+
+                    setTimeout(function() {
+
+                        window.location.href =
+                            "index.html";
+
+                    }, 1000);
+
+                } else {
+
+                    document.getElementById(
+                        "login-message"
+                    ).innerText =
+                        "Invalid email or password.";
+
+                    document.getElementById(
+                        "login-message"
+                    ).style.color = "red";
+
+                }
+
+            });
+
+    </script>
+
+</body>
+
+</html>

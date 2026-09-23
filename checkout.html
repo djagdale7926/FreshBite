@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FreshBite - Checkout</title>
+
+    <link rel="stylesheet" href="css_index.css">
+
+    <style>
+        .checkout-page {
+            background-color: #FFF8F0;
+            min-height: 100vh;
+            padding: 50px 8%;
+        }
+
+        .checkout-title {
+            text-align: center;
+            color: #2D1B12;
+            font-size: 40px;
+            margin-bottom: 40px;
+        }
+
+        .checkout-container {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 30px;
+        }
+
+        .checkout-box,
+        .order-summary {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+        }
+
+        .checkout-box h2,
+        .order-summary h2 {
+            color: #2D1B12;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+            color: #2D1B12;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 15px;
+            box-sizing: border-box;
+        }
+
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .payment-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .payment-option {
+            border: 1px solid #ddd;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .payment-option:hover {
+            border-color: #FF6B35;
+        }
+
+        .payment-option input {
+            margin-right: 8px;
+        }
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ddd;
+            padding: 12px 0;
+        }
+
+        .order-item:last-child {
+            border-bottom: none;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 0;
+        }
+
+        .total-row {
+            border-top: 2px solid #ddd;
+            padding-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #2D1B12;
+        }
+
+        .place-order-btn {
+            width: 100%;
+            padding: 15px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 10px;
+            background-color: #FF6B35;
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .place-order-btn:hover {
+            background-color: #e85a28;
+        }
+
+        .back-cart {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: #FF6B35;
+            text-decoration: none;
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            background: white;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+        }
+
+        .success-message h2 {
+            color: #2D1B12;
+        }
+
+        .success-message p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .success-message a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background-color: #FF6B35;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 768px) {
+
+            .checkout-container {
+                grid-template-columns: 1fr;
+            }
+
+            .checkout-title {
+                font-size: 30px;
+            }
+
+            .checkout-page {
+                padding: 30px 5%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            FreshBite
+        </div>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="index.html#restaurants">Restaurants</a>
+            <a href="index.html#menu">Menu</a>
+            <a href="cart.html">Cart 🛒</a>
+            <a href="account.html">Account</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+    </nav>
+
+
+    <!-- Checkout -->
+
+    <section class="checkout-page" id="checkout-section">
+
+        <h1 class="checkout-title">
+            Checkout 🍽️
+        </h1>
+
+
+        <div class="checkout-container">
+
+            <!-- Customer Details -->
+
+            <div class="checkout-box">
+
+                <h2>Delivery Details</h2>
+
+                <form id="checkout-form">
+
+                    <div class="form-group">
+
+                        <label for="name">
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            placeholder="Enter your name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="phone">
+                            Phone Number
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            placeholder="Enter your phone number"
+                            pattern="[0-9]{10}"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="address">
+                            Delivery Address
+                        </label>
+
+                        <textarea
+                            id="address"
+                            placeholder="Enter your complete address"
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="city">
+                            City
+                        </label>
+
+                        <input
+                            type="text"
+                            id="city"
+                            placeholder="Enter your city"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="pincode">
+                            PIN Code
+                        </label>
+
+                        <input
+                            type="text"
+                            id="pincode"
+                            placeholder="Enter PIN code"
+                            pattern="[0-9]{6}"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Delivery Time -->
+
+                    <div class="form-group">
+
+                        <label for="delivery-time">
+                            Delivery Time
+                        </label>
+
+                        <select id="delivery-time" required>
+
+                            <option value="">
+                                Select delivery time
+                            </option>
+
+                            <option>
+                                30 - 40 minutes
+                            </option>
+
+                            <option>
+                                40 - 50 minutes
+                            </option>
+
+                            <option>
+                                50 - 60 minutes
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Payment -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Payment Method
+                        </label>
+
+                        <div class="payment-options">
+
+                            <label class="payment-option">
+
+                                <input
+                                    type="radio"
+                                    name="payment"
+                                    value="Cash on Delivery"
+                                    required
+                                >
+
+                                💵 Cash on Delivery
+
+                            </label>
+
+
+                            <label class="payment-option">
+
+                                <input
+                                    type="radio"
+                                    name="payment"
+                                    value="UPI"
+                                >
+
+                                📱 UPI
+
+                            </label>
+
+
+                            <label class="payment-option">
+
+                                <input
+                                    type="radio"
+                                    name="payment"
+                                    value="Card"
+                                >
+
+                                💳 Credit / Debit Card
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="place-order-btn">
+
+                        Place Order
+
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- Order Summary -->
+
+            <div class="order-summary">
+
+                <h2>
+                    Your Order
+                </h2>
+
+                <div id="order-items">
+
+                    <!-- Items added using JavaScript -->
+
+                </div>
+
+
+                <div class="summary-row">
+
+                    <span>
+                        Subtotal
+                    </span>
+
+                    <span id="checkout-subtotal">
+                        ₹0
+                    </span>
+
+                </div>
+
+
+                <div class="summary-row">
+
+                    <span>
+                        Delivery Fee
+                    </span>
+
+                    <span id="checkout-delivery">
+                        ₹40
+                    </span>
+
+                </div>
+
+
+                <div class="summary-row total-row">
+
+                    <span>
+                        Total
+                    </span>
+
+                    <span id="checkout-total">
+                        ₹0
+                    </span>
+
+                </div>
+
+
+                <a
+                    href="cart.html"
+                    class="back-cart">
+
+                    ← Back to Cart
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Order Success -->
+
+    <div
+        class="success-message"
+        id="success-message">
+
+        <h2>
+            🎉 Order Placed Successfully!
+        </h2>
+
+        <p>
+            Thank you for ordering with FreshBite.
+        </p>
+
+        <p>
+            Your delicious food is being prepared
+            and will be delivered soon.
+        </p>
+
+        <p>
+            <strong>
+                Estimated Delivery:
+            </strong>
+
+            <span id="success-delivery-time"></span>
+        </p>
+
+        <a href="index.html">
+            Continue Shopping
+        </a>
+
+    </div>
+
+
+    <script>
+
+        // Get cart
+
+        function getCart() {
+
+            return JSON.parse(
+                localStorage.getItem("freshBiteCart")
+            ) || [];
+
+        }
+
+
+        // Display order summary
+
+        function displayOrder() {
+
+            let cart = getCart();
+
+            let orderItems =
+                document.getElementById("order-items");
+
+            let subtotal = 0;
+
+
+            if (cart.length === 0) {
+
+                orderItems.innerHTML = `
+                    <p>
+                        Your cart is empty.
+                    </p>
+                `;
+
+                document.getElementById(
+                    "checkout-subtotal"
+                ).innerText = "₹0";
+
+                document.getElementById(
+                    "checkout-delivery"
+                ).innerText = "₹0";
+
+                document.getElementById(
+                    "checkout-total"
+                ).innerText = "₹0";
+
+                return;
+            }
+
+
+            orderItems.innerHTML = "";
+
+
+            cart.forEach(function(item) {
+
+                let itemTotal =
+                    item.price * item.quantity;
+
+                subtotal += itemTotal;
+
+
+                orderItems.innerHTML += `
+
+                    <div class="order-item">
+
+                        <span>
+                            ${item.name}
+                            × ${item.quantity}
+                        </span>
+
+                        <strong>
+                            ₹${itemTotal}
+                        </strong>
+
+                    </div>
+
+                `;
+
+            });
+
+
+            // Delivery fee
+
+            let deliveryFee = 40;
+
+            if (subtotal >= 500) {
+
+                deliveryFee = 0;
+
+            }
+
+
+            let total =
+                subtotal + deliveryFee;
+
+
+            document.getElementById(
+                "checkout-subtotal"
+            ).innerText = "₹" + subtotal;
+
+
+            document.getElementById(
+                "checkout-delivery"
+            ).innerText =
+                deliveryFee === 0
+                ? "FREE"
+                : "₹" + deliveryFee;
+
+
+            document.getElementById(
+                "checkout-total"
+            ).innerText = "₹" + total;
+
+        }
+
+
+        // Place Order
+
+        document.getElementById(
+            "checkout-form"
+        ).addEventListener(
+            "submit",
+            function(event) {
+
+                event.preventDefault();
+
+
+                let cart = getCart();
+
+
+                if (cart.length === 0) {
+
+                    alert(
+                        "Your cart is empty. Please add food items first."
+                    );
+
+                    return;
+
+                }
+
+
+                // Get selected delivery time
+
+                let deliveryTime =
+                    document.getElementById(
+                        "delivery-time"
+                    ).value;
+
+
+                // Show success message
+
+                document.getElementById(
+                    "checkout-section"
+                ).style.display = "none";
+
+
+                document.getElementById(
+                    "success-delivery-time"
+                ).innerText = deliveryTime;
+
+
+                document.getElementById(
+                    "success-message"
+                ).style.display = "block";
+
+
+                // Clear cart after order
+
+                localStorage.removeItem(
+                    "freshBiteCart"
+                );
+
+            }
+        );
+
+
+        // Load order
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            displayOrder
+        );
+
+    </script>
+
+</body>
+</html>

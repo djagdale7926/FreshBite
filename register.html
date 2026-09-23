@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FreshBite - Register</title>
+
+    <link rel="stylesheet" href="CSS.css">
+
+    <style>
+        .auth-page {
+            min-height: 100vh;
+            background-color: #FFF8F0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .auth-container {
+            width: 100%;
+            max-width: 430px;
+            background: white;
+            padding: 40px;
+            border-radius: 18px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .auth-logo {
+            text-align: center;
+            color: #FF6B35;
+            font-size: 35px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .auth-title {
+            text-align: center;
+            color: #2D1B12;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .auth-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #2D1B12;
+            font-weight: bold;
+            margin-bottom: 7px;
+        }
+
+        .form-group input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 13px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #FF6B35;
+        }
+
+        .auth-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: #FF6B35;
+            color: white;
+            border: none;
+            border-radius: 9px;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .auth-btn:hover {
+            background-color: #e85a28;
+        }
+
+        .auth-link {
+            text-align: center;
+            margin-top: 22px;
+            color: #555;
+        }
+
+        .auth-link a {
+            color: #FF6B35;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .home-link {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: #2D1B12;
+            text-decoration: none;
+        }
+
+        .message {
+            text-align: center;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="auth-page">
+
+        <div class="auth-container">
+
+            <div class="auth-logo">
+                FreshBite 🍔
+            </div>
+
+            <h1 class="auth-title">
+                Create Account
+            </h1>
+
+            <p class="auth-subtitle">
+                Join FreshBite and start ordering.
+            </p>
+
+
+            <form id="register-form">
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter your name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="phone">
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        placeholder="Enter 10-digit phone number"
+                        pattern="[0-9]{10}"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Create password"
+                        minlength="6"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="confirm-password">
+                        Confirm Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="confirm-password"
+                        placeholder="Confirm password"
+                        minlength="6"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="auth-btn">
+
+                    Create Account
+
+                </button>
+
+            </form>
+
+
+            <div
+                id="register-message"
+                class="message">
+            </div>
+
+
+            <p class="auth-link">
+
+                Already have an account?
+
+                <a href="login.html">
+                    Login
+                </a>
+
+            </p>
+
+
+            <a
+                href="index.html"
+                class="home-link">
+
+                ← Back to Home
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        document.getElementById("register-form")
+            .addEventListener("submit", function(event) {
+
+                event.preventDefault();
+
+
+                let name =
+                    document.getElementById("name").value;
+
+                let email =
+                    document.getElementById("email").value;
+
+                let phone =
+                    document.getElementById("phone").value;
+
+                let password =
+                    document.getElementById("password").value;
+
+                let confirmPassword =
+                    document.getElementById(
+                        "confirm-password"
+                    ).value;
+
+
+                let message =
+                    document.getElementById(
+                        "register-message"
+                    );
+
+
+                // Check passwords
+
+                if (password !== confirmPassword) {
+
+                    message.innerText =
+                        "Passwords do not match.";
+
+                    message.style.color = "red";
+
+                    return;
+
+                }
+
+
+                // Create user object
+
+                let user = {
+
+                    name: name,
+
+                    email: email,
+
+                    phone: phone,
+
+                    password: password
+
+                };
+
+
+                // Save user
+
+                localStorage.setItem(
+                    "freshBiteUser",
+                    JSON.stringify(user)
+                );
+
+
+                message.innerText =
+                    "Account created successfully! 🎉";
+
+                message.style.color = "green";
+
+
+                // Go to login page
+
+                setTimeout(function() {
+
+                    window.location.href =
+                        "login.html";
+
+                }, 1200);
+
+            });
+
+    </script>
+
+</body>
+
+</html>

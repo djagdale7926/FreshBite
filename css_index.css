@@ -1,0 +1,840 @@
+/* ================= GENERAL ================= */
+
+* {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #fff8f0;
+    color: #2d1b12;
+}
+
+
+/* ================= NAVBAR ================= */
+
+#n {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 15px 50px;
+
+    background-color: white;
+
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.logo {
+    margin: 0;
+
+    font-size: 34px;
+
+    color: #ff6b35;
+
+    white-space: nowrap;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+
+    gap: 25px;
+}
+
+.nav-links a {
+    text-decoration: none;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    color: #2d1b12;
+
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ff6b35;
+}
+
+
+/* ================= HERO ================= */
+
+.hero-img {
+
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.35),
+            rgba(0, 0, 0, 0.35)
+        ),
+        url(food.jpg);
+
+    width: 100%;
+    min-height: 90vh;
+
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    position: relative;
+}
+
+.hero-wrapper {
+
+    color: white;
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 90%;
+
+    text-align: center;
+}
+
+.hero-wrapper h1 {
+
+    font-size: 65px;
+
+    font-weight: bold;
+
+    color: white;
+
+    margin-bottom: 15px;
+}
+
+.hero-wrapper p {
+
+    font-size: 21px;
+
+    font-weight: bold;
+
+    line-height: 1.5;
+}
+
+
+/* ================= HERO CARDS ================= */
+
+.cards {
+
+    display: flex;
+
+    gap: 30px;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    margin-top: 25px;
+}
+
+.info {
+
+    color: #2d1b12;
+
+    width: 300px;
+
+    padding: 25px;
+
+    background: #fff8f0;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.25);
+
+    transition: 0.3s;
+}
+
+.info:hover {
+
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 12px 25px rgba(0, 0, 0, 0.3);
+}
+
+.info h2 {
+
+    color: #ff6b35;
+
+    margin-bottom: 10px;
+}
+
+.info p {
+
+    color: #2d1b12;
+
+    font-size: 17px;
+}
+
+
+/* ================= BUTTON ================= */
+
+.shop {
+
+    display: inline-block;
+
+    background: #ff6b35;
+
+    color: white;
+
+    text-decoration: none;
+
+    padding: 10px 20px;
+
+    border-radius: 8px;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.shop:hover {
+
+    background: #d94e20;
+
+    transform: scale(1.05);
+}
+
+
+/* ================= SECTION HEADINGS ================= */
+
+#menu h3,
+.restaurant-section h3 {
+
+    margin-top: 35px;
+
+    margin-left: 25px;
+    margin-bottom: 20px;
+
+    font-size: 35px;
+
+    color: #2d1b12;
+}
+
+
+/* ================= RESTAURANTS ================= */
+
+.restaurant-section {
+
+    padding: 25px 20px;
+}
+
+.restaurant-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 25px;
+
+    padding: 10px 20px;
+}
+
+.restaurant-card {
+
+    background: white;
+
+    border-radius: 15px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.15);
+
+    padding-bottom: 20px;
+
+    transition: 0.3s;
+
+    text-align: center;
+}
+
+.restaurant-card:hover {
+
+    transform: translateY(-7px);
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.restaurant-card img {
+
+    width: 100%;
+
+    height: 180px;
+
+    object-fit: cover;
+}
+
+.restaurant-card h2 {
+
+    margin-top: 15px;
+
+    color: #2d1b12;
+}
+
+.restaurant-card p {
+
+    margin: 8px 0;
+
+    color: #555;
+
+    font-size: 16px;
+}
+
+
+/* ================= FOOD PRODUCTS ================= */
+
+.scroll-container {
+
+    position: relative;
+
+    width: 100%;
+
+    padding: 0 45px;
+}
+
+#product {
+
+    display: flex;
+
+    gap: 20px;
+
+    width: 100%;
+
+    height: 430px;
+
+    overflow-x: auto;
+
+    overflow-y: hidden;
+
+    white-space: nowrap;
+
+    scroll-behavior: smooth;
+
+    scrollbar-width: none;
+
+    padding: 20px 10px;
+}
+
+#product::-webkit-scrollbar {
+
+    display: none;
+}
+
+.productlist {
+
+    flex: 0 0 220px;
+
+    background: white;
+
+    border-radius: 15px;
+
+    padding: 10px;
+
+    text-align: center;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.15);
+
+    transition: 0.3s;
+
+    white-space: normal;
+}
+
+.productlist:hover {
+
+    transform: translateY(-7px);
+
+    box-shadow:
+        0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.productlist img {
+
+    width: 200px;
+
+    height: 200px;
+
+    object-fit: cover;
+
+    border-radius: 12px;
+}
+
+.product-heading {
+
+    margin: 10px 0;
+
+    color: #2d1b12;
+
+    font-size: 21px;
+}
+
+.productlist p {
+
+    color: #555;
+
+    margin: 7px 0;
+}
+
+.rating {
+
+    font-size: 17px;
+
+    color: #444;
+}
+
+.price {
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    color: #2d1b12;
+}
+
+
+/* ================= ORDER BUTTON ================= */
+
+.order-btn {
+
+    display: inline-block;
+
+    text-decoration: none;
+
+    border: none;
+
+    background-color: #ff6b35;
+
+    color: white;
+
+    padding: 10px 20px;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.order-btn:hover {
+
+    background-color: #d94e20;
+
+    transform: scale(1.05);
+}
+
+
+/* ================= SCROLL BUTTONS ================= */
+
+.scroll-btn {
+
+    position: absolute;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    z-index: 10;
+
+    width: 45px;
+
+    height: 45px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background-color: white;
+
+    color: #333;
+
+    font-size: 25px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 3px 10px rgba(0, 0, 0, 0.25);
+
+    transition: 0.3s;
+}
+
+.scroll-btn:hover {
+
+    background-color: #ff6b35;
+
+    color: white;
+}
+
+.scroll-btn.left {
+
+    left: 5px;
+}
+
+.scroll-btn.right {
+
+    right: 5px;
+}
+
+
+/* ================= CITIES ================= */
+
+.delivery {
+
+    border: 2px solid rgba(93, 90, 90, 0.25);
+
+    border-radius: 10px;
+
+    margin: 30px 20px;
+
+    padding: 25px;
+
+    background-color: white;
+}
+
+.delivery h1 {
+
+    color: #2d1b12;
+}
+
+.cities {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+
+    margin-bottom: 15px;
+}
+
+.city {
+
+    border: 2px solid rgba(0, 0, 0, 0.25);
+
+    border-radius: 10px;
+
+    background-color: #fff8f0;
+
+    padding: 15px;
+
+    text-align: center;
+
+    transition: 0.3s;
+}
+
+.city:hover {
+
+    background-color: #ff6b35;
+
+    color: white;
+
+    transform: translateY(-3px);
+}
+
+
+/* ================= SHOW MORE ================= */
+
+details {
+
+    margin-top: 15px;
+}
+
+summary {
+
+    cursor: pointer;
+
+    text-align: center;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    padding: 10px;
+
+    border-radius: 8px;
+
+    background-color: #ff6b35;
+
+    color: white;
+
+    width: 150px;
+
+    margin: auto;
+
+    list-style: none;
+}
+
+summary:hover {
+
+    background-color: #d94e20;
+}
+
+
+/* ================= FOOTER ================= */
+
+.list {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 30px;
+
+    margin: 25px;
+
+    border-radius: 10px;
+
+    width: calc(100% - 50px);
+
+    background-color: #2d1b12;
+
+    padding: 35px;
+
+    color: white;
+}
+
+.list .lis {
+
+    padding: 10px;
+}
+
+.list li {
+
+    font-size: 17px;
+
+    margin: 12px 0;
+
+    list-style: none;
+}
+
+.list li b {
+
+    font-size: 21px;
+
+    color: #ff9a76;
+}
+
+.list a {
+
+    color: white;
+
+    text-decoration: none;
+
+    transition: 0.3s;
+}
+
+.list a:hover {
+
+    color: #ff9a76;
+}
+
+
+/* ================= TABLET ================= */
+
+@media screen and (max-width: 900px) {
+
+    .navbar {
+
+        padding: 15px 20px;
+    }
+
+    .nav-links {
+
+        gap: 15px;
+    }
+
+    .nav-links a {
+
+        font-size: 15px;
+    }
+
+    .hero-wrapper h1 {
+
+        font-size: 45px;
+    }
+
+    .restaurant-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .list {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+}
+
+
+/* ================= MOBILE ================= */
+
+@media screen and (max-width: 600px) {
+
+    .navbar {
+
+        flex-direction: column;
+
+        gap: 15px;
+
+        padding: 15px;
+    }
+
+    .logo {
+
+        font-size: 28px;
+    }
+
+    .nav-links {
+
+        display: flex;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+        gap: 12px;
+    }
+
+    .nav-links a {
+
+        font-size: 14px;
+    }
+
+    .hero-img {
+
+        min-height: 100vh;
+    }
+
+    .hero-wrapper {
+
+        width: 95%;
+
+        top: 50%;
+    }
+
+    .hero-wrapper h1 {
+
+        font-size: 35px;
+    }
+
+    .hero-wrapper p {
+
+        font-size: 16px;
+    }
+
+    .cards {
+
+        gap: 15px;
+    }
+
+    .info {
+
+        width: 90%;
+
+        padding: 18px;
+    }
+
+    #menu h3,
+    .restaurant-section h3 {
+
+        font-size: 27px;
+
+        margin-left: 15px;
+    }
+
+    .restaurant-section {
+
+        padding: 15px 10px;
+    }
+
+    .restaurant-grid {
+
+        grid-template-columns: 1fr;
+
+        padding: 10px;
+    }
+
+    .restaurant-card img {
+
+        height: 200px;
+    }
+
+    .scroll-container {
+
+        padding: 0 35px;
+    }
+
+    #product {
+
+        height: 420px;
+    }
+
+    .productlist {
+
+        flex: 0 0 210px;
+    }
+
+    .productlist img {
+
+        width: 190px;
+
+        height: 190px;
+    }
+
+    .cities {
+
+        grid-template-columns: 1fr;
+    }
+
+    .delivery {
+
+        margin: 20px 10px;
+
+        padding: 15px;
+    }
+
+    .list {
+
+        grid-template-columns: 1fr;
+
+        margin: 15px;
+
+        width: calc(100% - 30px);
+
+        padding: 25px;
+    }
+
+    .list .lis {
+
+        padding: 5px;
+    }
+}

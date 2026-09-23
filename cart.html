@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FreshBite - Cart</title>
+
+    <link rel="stylesheet" href="css_index.css">
+
+    <style>
+        /* Cart Page */
+
+        .cart-page {
+            background-color: #FFF8F0;
+            min-height: 100vh;
+            padding: 50px 8%;
+        }
+
+        .cart-title {
+            text-align: center;
+            color: #2D1B12;
+            font-size: 40px;
+            margin-bottom: 40px;
+        }
+
+        .cart-container {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        /* Cart Items */
+
+        .cart-items {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #ddd;
+            padding: 20px 0;
+            gap: 20px;
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .item-info {
+            flex: 1;
+        }
+
+        .item-info h3 {
+            color: #2D1B12;
+            margin-bottom: 8px;
+        }
+
+        .item-price {
+            color: #FF6B35;
+            font-weight: bold;
+        }
+
+        /* Quantity */
+
+        .quantity-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-box button {
+            width: 32px;
+            height: 32px;
+            border: none;
+            border-radius: 50%;
+            background-color: #FF6B35;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .quantity-box button:hover {
+            background-color: #e85a28;
+        }
+
+        .quantity {
+            font-weight: bold;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        /* Remove Button */
+
+        .remove-btn {
+            border: none;
+            background: #ffe5dc;
+            color: #d84315;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .remove-btn:hover {
+            background: #ffd2c4;
+        }
+
+        /* Summary */
+
+        .cart-summary {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            height: fit-content;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+        }
+
+        .cart-summary h2 {
+            color: #2D1B12;
+            margin-bottom: 25px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 0;
+            color: #444;
+        }
+
+        .total-row {
+            border-top: 2px solid #ddd;
+            padding-top: 20px;
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #2D1B12;
+        }
+
+        .checkout-btn {
+            display: block;
+            width: 100%;
+            margin-top: 25px;
+            padding: 14px;
+            background-color: #FF6B35;
+            color: white;
+            text-align: center;
+            border: none;
+            border-radius: 10px;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .checkout-btn:hover {
+            background-color: #e85a28;
+        }
+
+        .continue-btn {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: #FF6B35;
+            text-decoration: none;
+        }
+
+        /* Empty Cart */
+
+        .empty-cart {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .empty-cart h2 {
+            color: #2D1B12;
+            margin-bottom: 15px;
+        }
+
+        .empty-cart p {
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        /* Mobile */
+
+        @media (max-width: 768px) {
+
+            .cart-container {
+                grid-template-columns: 1fr;
+            }
+
+            .cart-title {
+                font-size: 30px;
+            }
+
+            .cart-item {
+                flex-wrap: wrap;
+            }
+
+            .quantity-box {
+                order: 3;
+            }
+
+            .remove-btn {
+                order: 4;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            FreshBite
+        </div>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="index.html#restaurants">Restaurants</a>
+            <a href="index.html#menu">Menu</a>
+            <a href="cart.html">Cart 🛒</a>
+            <a href="account.html">Account</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+    </nav>
+
+
+    <!-- Cart Section -->
+
+    <section class="cart-page">
+
+        <h1 class="cart-title">
+            Your Shopping Cart 🛒
+        </h1>
+
+        <div class="cart-container">
+
+            <!-- Cart Items -->
+
+            <div class="cart-items" id="cart-items">
+
+                <!-- Items will be added using JavaScript -->
+
+            </div>
+
+
+            <!-- Cart Summary -->
+
+            <div class="cart-summary">
+
+                <h2>Order Summary</h2>
+
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span id="subtotal">₹0</span>
+                </div>
+
+                <div class="summary-row">
+                    <span>Delivery Fee</span>
+                    <span id="delivery">₹40</span>
+                </div>
+
+                <div class="summary-row total-row">
+                    <span>Total</span>
+                    <span id="total">₹0</span>
+                </div>
+
+                <a href="checkout.html" class="checkout-btn">
+                    Proceed to Checkout
+                </a>
+
+                <a href="index.html" class="continue-btn">
+                    ← Continue Shopping
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <script>
+
+        // Get cart from localStorage
+
+        function getCart() {
+            return JSON.parse(localStorage.getItem("freshBiteCart")) || [];
+        }
+
+
+        // Save cart
+
+        function saveCart(cart) {
+            localStorage.setItem(
+                "freshBiteCart",
+                JSON.stringify(cart)
+            );
+        }
+
+
+        // Display Cart
+
+        function displayCart() {
+
+            let cart = getCart();
+
+            let cartItems = document.getElementById("cart-items");
+
+            let subtotal = 0;
+
+
+            // Empty Cart
+
+            if (cart.length === 0) {
+
+                cartItems.innerHTML = `
+                    <div class="empty-cart">
+
+                        <h2>Your cart is empty 🛒</h2>
+
+                        <p>
+                            Looks like you haven't added anything yet.
+                        </p>
+
+                        <a href="index.html" class="checkout-btn">
+                            Browse Food
+                        </a>
+
+                    </div>
+                `;
+
+                document.getElementById("subtotal").innerText = "₹0";
+                document.getElementById("delivery").innerText = "₹0";
+                document.getElementById("total").innerText = "₹0";
+
+                return;
+            }
+
+
+            // Clear previous items
+
+            cartItems.innerHTML = "";
+
+
+            // Display every item
+
+            cart.forEach((item, index) => {
+
+                let itemTotal = item.price * item.quantity;
+
+                subtotal += itemTotal;
+
+
+                cartItems.innerHTML += `
+
+                    <div class="cart-item">
+
+                        <div class="item-info">
+
+                            <h3>${item.name}</h3>
+
+                            <div class="item-price">
+                                ₹${item.price} each
+                            </div>
+
+                        </div>
+
+
+                        <div class="quantity-box">
+
+                            <button onclick="decreaseQuantity(${index})">
+                                −
+                            </button>
+
+                            <span class="quantity">
+                                ${item.quantity}
+                            </span>
+
+                            <button onclick="increaseQuantity(${index})">
+                                +
+                            </button>
+
+                        </div>
+
+
+                        <strong>
+                            ₹${itemTotal}
+                        </strong>
+
+
+                        <button
+                            class="remove-btn"
+                            onclick="removeItem(${index})">
+
+                            🗑️ Remove
+
+                        </button>
+
+                    </div>
+
+                `;
+
+            });
+
+
+            // Delivery fee
+
+            let deliveryFee = 40;
+
+            // Free delivery for orders above ₹500
+
+            if (subtotal >= 500) {
+                deliveryFee = 0;
+            }
+
+
+            let total = subtotal + deliveryFee;
+
+
+            // Display totals
+
+            document.getElementById("subtotal").innerText =
+                "₹" + subtotal;
+
+            document.getElementById("delivery").innerText =
+                deliveryFee === 0
+                ? "FREE"
+                : "₹" + deliveryFee;
+
+            document.getElementById("total").innerText =
+                "₹" + total;
+
+        }
+
+
+        // Increase Quantity
+
+        function increaseQuantity(index) {
+
+            let cart = getCart();
+
+            cart[index].quantity++;
+
+            saveCart(cart);
+
+            displayCart();
+        }
+
+
+        // Decrease Quantity
+
+        function decreaseQuantity(index) {
+
+            let cart = getCart();
+
+            if (cart[index].quantity > 1) {
+
+                cart[index].quantity--;
+
+            } else {
+
+                cart.splice(index, 1);
+
+            }
+
+            saveCart(cart);
+
+            displayCart();
+        }
+
+
+        // Remove Item
+
+        function removeItem(index) {
+
+            let cart = getCart();
+
+            cart.splice(index, 1);
+
+            saveCart(cart);
+
+            displayCart();
+
+        }
+
+
+        // Load cart when page opens
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            displayCart
+        );
+
+    </script>
+
+</body>
+
+</html>
