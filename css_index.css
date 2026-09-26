@@ -605,7 +605,6 @@ body {
 
 @media screen and (max-width: 600px) {
 
-    /* Prevent horizontal overflow */
     html,
     body {
         width: 100%;
@@ -643,9 +642,10 @@ body {
         box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
     }
 
-    /* Space for fixed navbar */
+    /* IMPORTANT:
+       Navbar is fixed, so create enough space for it */
     body {
-        padding-top: 125px;
+        padding-top: 185px;
     }
 
     .hero-img {
@@ -676,7 +676,6 @@ body {
         padding: 5px 0;
         white-space: nowrap;
     }
-
 }
     /* ================= HERO SECTION ================= */
 
