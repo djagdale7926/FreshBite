@@ -623,34 +623,45 @@ body {
         height: auto;
     }
 
-    /* ================= NAVBAR ================= */
+/* ================= MOBILE NAVBAR ================= */
 
+@media screen and (max-width: 600px) {
+
+    /* Sticky Navbar */
     .navbar {
-        position: fixed !important;
+        position: fixed;
         top: 0;
         left: 0;
-        right: 0;
-    
         width: 100%;
         z-index: 9999;
-    
+
         display: flex;
         flex-direction: column;
         align-items: center;
-    
         gap: 10px;
+
         padding: 12px 10px;
-    
         background-color: white;
         box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
     }
 
+    /* Space for fixed navbar */
+    body {
+        padding-top: 210px;
+    }
+
+    .hero-img {
+        margin-top: 0;
+    }
+
+    /* Logo */
     .logo {
         font-size: 27px;
         text-align: center;
         margin: 0;
     }
 
+    /* Navigation links */
     .nav-links {
         display: flex;
         flex-wrap: wrap;
@@ -668,6 +679,7 @@ body {
         white-space: nowrap;
     }
 
+}
     /* ================= HERO SECTION ================= */
 
     .hero-img {
