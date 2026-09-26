@@ -600,11 +600,12 @@ body {
 
 
 
+
 /* ================= MOBILE RESPONSIVE ================= */
 
 @media screen and (max-width: 600px) {
 
-    /* Prevent unwanted horizontal overflow */
+    /* Prevent horizontal overflow */
     html,
     body {
         width: 100%;
@@ -623,11 +624,8 @@ body {
         height: auto;
     }
 
-/* ================= MOBILE NAVBAR ================= */
+    /* ================= MOBILE NAVBAR ================= */
 
-@media screen and (max-width: 600px) {
-
-    /* Sticky Navbar */
     .navbar {
         position: fixed;
         top: 0;
