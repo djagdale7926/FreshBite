@@ -645,7 +645,7 @@ body {
 
     /* Space for fixed navbar */
     body {
-        padding-top: 0px;
+        padding-top: 125px;
     }
 
     .hero-img {
