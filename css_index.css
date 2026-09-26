@@ -599,146 +599,367 @@ body {
 }
 
 
-/* ================= MOBILE ================= */
+
+/* ================= MOBILE RESPONSIVE ================= */
 
 @media screen and (max-width: 600px) {
 
+    /* Prevent unwanted horizontal overflow */
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* ================= NAVBAR ================= */
+
     .navbar {
-
+        display: flex;
         flex-direction: column;
-
-        gap: 15px;
-
-        padding: 15px;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 10px;
+        width: 100%;
     }
 
     .logo {
-
-        font-size: 28px;
+        font-size: 27px;
+        text-align: center;
+        margin: 0;
     }
 
     .nav-links {
-
         display: flex;
-
         flex-wrap: wrap;
-
         justify-content: center;
-
-        gap: 12px;
+        align-items: center;
+        gap: 8px 16px;
+        width: 100%;
+        padding: 0;
+        margin: 0;
     }
 
     .nav-links a {
-
         font-size: 14px;
+        padding: 5px 0;
+        white-space: nowrap;
     }
 
-    .hero-img {
+    /* ================= HERO SECTION ================= */
 
-        min-height: 100vh;
+    .hero-img {
+        min-height: 650px;
+        height: auto;
+        background-size: cover;
+        background-position: center;
+        position: relative;
     }
 
     .hero-wrapper {
-
-        width: 95%;
-
+        width: calc(100% - 30px);
+        max-width: 100%;
         top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 15px 10px;
+        text-align: center;
     }
 
     .hero-wrapper h1 {
-
-        font-size: 35px;
+        font-size: clamp(26px, 7vw, 36px);
+        line-height: 1.2;
+        margin: 0 0 15px;
+        overflow-wrap: break-word;
     }
 
     .hero-wrapper p {
-
-        font-size: 16px;
+        font-size: 15px;
+        line-height: 1.6;
+        margin: 10px 0 20px;
     }
 
+    /* Hero information cards */
     .cards {
-
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         gap: 15px;
+        width: 100%;
     }
 
     .info {
-
-        width: 90%;
-
+        width: 100%;
+        max-width: 400px;
         padding: 18px;
+        margin: 0 auto;
+        text-align: center;
     }
+
+    .info h2 {
+        font-size: 23px;
+        line-height: 1.3;
+    }
+
+    .info p {
+        font-size: 15px;
+        line-height: 1.5;
+    }
+
+    .info button,
+    .info a {
+        max-width: 100%;
+    }
+
+    /* ================= SECTION HEADINGS ================= */
 
     #menu h3,
     .restaurant-section h3 {
-
-        font-size: 27px;
-
-        margin-left: 15px;
+        font-size: 25px;
+        line-height: 1.3;
+        margin: 20px 15px;
+        text-align: center;
     }
 
     .restaurant-section {
-
         padding: 15px 10px;
+        width: 100%;
     }
 
+    /* ================= RESTAURANT CARDS ================= */
+
     .restaurant-grid {
-
-        grid-template-columns: 1fr;
-
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 15px;
         padding: 10px;
+        width: 100%;
+    }
+
+    .restaurant-card {
+        width: 100%;
+        min-width: 0;
+        margin: 0;
+        overflow: hidden;
+        border-radius: 15px;
     }
 
     .restaurant-card img {
-
-        height: 200px;
+        width: 100%;
+        height: 130px;
+        object-fit: cover;
+        display: block;
     }
+
+    .restaurant-card h3,
+    .restaurant-card h4 {
+        font-size: 17px;
+        line-height: 1.3;
+        margin: 10px 5px;
+        overflow-wrap: break-word;
+    }
+
+    .restaurant-card p {
+        font-size: 13px;
+        line-height: 1.5;
+        margin: 5px;
+    }
+
+    .restaurant-card button,
+    .restaurant-card a {
+        font-size: 13px;
+        padding: 9px 12px;
+        max-width: 100%;
+        margin-bottom: 10px;
+    }
+
+    /* ================= FOOD CAROUSEL ================= */
 
     .scroll-container {
-
-        padding: 0 35px;
+        display: flex;
+        gap: 15px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 10px 15px 20px;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
     }
 
-    #product {
-
-        height: 420px;
+    .scroll-container::-webkit-scrollbar {
+        height: 5px;
     }
 
     .productlist {
-
-        flex: 0 0 210px;
+        flex: 0 0 75%;
+        max-width: 260px;
+        min-width: 0;
+        scroll-snap-align: center;
+        height: auto;
+        padding: 12px;
+        margin: 0;
+        text-align: center;
     }
 
     .productlist img {
-
-        width: 190px;
-
-        height: 190px;
+        width: 100%;
+        max-width: 190px;
+        height: 170px;
+        object-fit: contain;
+        display: block;
+        margin: 0 auto;
     }
+
+    .productlist h3,
+    .productlist h4 {
+        font-size: 18px;
+        line-height: 1.3;
+        margin: 10px 0;
+    }
+
+    .productlist p {
+        font-size: 14px;
+        line-height: 1.4;
+        overflow-wrap: break-word;
+    }
+
+    .productlist button {
+        max-width: 100%;
+        padding: 10px 14px;
+        font-size: 14px;
+    }
+
+    /* ================= CITIES ================= */
 
     .cities {
-
-        grid-template-columns: 1fr;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        padding: 10px;
     }
+
+    .cities > * {
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    /* ================= DELIVERY SECTION ================= */
 
     .delivery {
-
-        margin: 20px 10px;
-
-        padding: 15px;
+        width: calc(100% - 30px);
+        margin: 20px auto;
+        padding: 20px 15px;
+        border-radius: 15px;
     }
 
+    .delivery h2 {
+        font-size: 24px;
+        line-height: 1.3;
+        text-align: center;
+    }
+
+    .delivery p {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    /* ================= FOOTER ================= */
+
     .list {
-
-        grid-template-columns: 1fr;
-
-        margin: 15px;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 25px 15px;
 
         width: calc(100% - 30px);
+        max-width: 100%;
+        margin: 20px auto;
+        padding: 25px 20px;
 
-        padding: 25px;
+        border-radius: 15px;
+        text-align: left;
+    }
+
+    .list > * {
+        min-width: 0;
+        max-width: 100%;
     }
 
     .list .lis {
+        padding: 0;
+        margin: 0;
+    }
 
-        padding: 5px;
+    .list .lis h2,
+    .list .lis h3 {
+        font-size: 19px;
+        line-height: 1.4;
+        margin: 0 0 12px;
+        overflow-wrap: break-word;
+    }
+
+    .list .lis a,
+    .list .lis p {
+        font-size: 14px;
+        line-height: 1.8;
+        overflow-wrap: anywhere;
+    }
+
+    /* ================= BUTTONS ================= */
+
+    button,
+    .btn {
+        max-width: 100%;
+        cursor: pointer;
+        transition: 0.2s ease;
+    }
+
+    /* ================= SMALL PHONES ================= */
+
+    @media screen and (max-width: 380px) {
+
+        .nav-links {
+            gap: 8px 12px;
+        }
+
+        .nav-links a {
+            font-size: 13px;
+        }
+
+        .restaurant-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .restaurant-card img {
+            height: 190px;
+        }
+
+        .productlist {
+            flex: 0 0 85%;
+        }
+
+        .cities {
+            grid-template-columns: 1fr;
+        }
+
+        .list {
+            grid-template-columns: 1fr;
+            gap: 20px;
+            padding: 25px;
+        }
+
+        .hero-wrapper h1 {
+            font-size: 27px;
+        }
     }
 }
