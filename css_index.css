@@ -76,8 +76,8 @@ body {
 
     background-image:
         linear-gradient(
-            rgba(0, 0, 0, 0.11),
-            rgba(0, 0, 0, 0.11)
+            rgba(0, 0, 0, 0.35),
+            rgba(0, 0, 0, 0.35)
         ),
         url(food.jpg);
 
@@ -501,6 +501,102 @@ body {
     right: 5px;
 }
 
+
+/* ================= CITIES ================= */
+
+.delivery {
+
+    border: 2px solid rgba(93, 90, 90, 0.25);
+
+    border-radius: 10px;
+
+    margin: 30px 20px;
+
+    padding: 25px;
+
+    background-color: white;
+}
+
+.delivery h1 {
+
+    color: #2d1b12;
+}
+
+.cities {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+
+    margin-bottom: 15px;
+}
+
+.city {
+
+    border: 2px solid rgba(0, 0, 0, 0.25);
+
+    border-radius: 10px;
+
+    background-color: #fff8f0;
+
+    padding: 15px;
+
+    text-align: center;
+
+    transition: 0.3s;
+}
+
+.city:hover {
+
+    background-color: #ff6b35;
+
+    color: white;
+
+    transform: translateY(-3px);
+}
+
+
+/* ================= SHOW MORE ================= */
+
+details {
+
+    margin-top: 15px;
+}
+
+summary {
+
+    cursor: pointer;
+
+    text-align: center;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    padding: 10px;
+
+    border-radius: 8px;
+
+    background-color: #ff6b35;
+
+    color: white;
+
+    width: 150px;
+
+    margin: auto;
+
+    list-style: none;
+}
+
+summary:hover {
+
+    background-color: #d94e20;
+}
+
+
 /* ================= FOOTER ================= */
 
 .list {
@@ -600,12 +696,11 @@ body {
 
 
 
-
 /* ================= MOBILE RESPONSIVE ================= */
 
 @media screen and (max-width: 600px) {
 
-    /* Prevent horizontal overflow */
+    /* Prevent unwanted horizontal overflow */
     html,
     body {
         width: 100%;
@@ -624,42 +719,23 @@ body {
         height: auto;
     }
 
-    /* ================= MOBILE NAVBAR ================= */
+    /* ================= NAVBAR ================= */
 
     .navbar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 9999;
-
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 10px;
-
         padding: 12px 10px;
-        background-color: white;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+        width: 100%;
     }
 
-    /* Space for fixed navbar */
-    body {
-        padding-top: 125px;
-    }
-
-    .hero-img {
-        margin-top: 0;
-    }
-
-    /* Logo */
     .logo {
         font-size: 27px;
         text-align: center;
         margin: 0;
     }
 
-    /* Navigation links */
     .nav-links {
         display: flex;
         flex-wrap: wrap;
@@ -676,8 +752,6 @@ body {
         padding: 5px 0;
         white-space: nowrap;
     }
-
-}
 
     /* ================= HERO SECTION ================= */
 
